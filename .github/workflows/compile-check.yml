@@ -6,18 +6,14 @@ on:
   push:
     branches:
       - master
-      - 'rel/1.*'
-      - 'rc/1.*'
-      - 'force_ci/**'
+      - 'new_*'
     paths-ignore:
       - 'docs/**'
       - 'site/**'
   pull_request:
     branches:
       - master
-      - 'rel/1.*'
-      - 'rc/1.*'
-      - 'force_ci/**'
+      - "new_*"
     paths-ignore:
       - 'docs/**'
       - 'site/**'
@@ -41,6 +37,7 @@ jobs:
         java: [8, 11]
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
+    name: Build with JDK ${{ matrix.jdk_version }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK ${{ matrix.java }}
