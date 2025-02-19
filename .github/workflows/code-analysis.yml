@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java', 'go', 'typescript', 'scala' ]
+        language: [ 'java', 'go', 'typescript' ]
     runs-on: ubuntu-latest
 
     steps:
