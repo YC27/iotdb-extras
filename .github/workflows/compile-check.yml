@@ -34,24 +34,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java8: [8]
-        java11: [11]
         java: [8, 11]
         os: [ ubuntu-latest ]
     runs-on: ${{ matrix.os }}
-    name: Build with JDK ${{ matrix.java }}
     steps:
       - uses: actions/checkout@v4
-      - name: Set up JDK ${{ matrix.java8 }}
+      - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
           distribution: liberica
-          java-version: ${{ matrix.java8 }}
-      - name: Set up JDK ${{ matrix.java11 }}
-        uses: actions/setup-java@v4
-        with:
-          distribution: liberica
-          java-version: ${{ matrix.java11 }}
+          java-version: ${{ matrix.java }}
       - name: Compiler Test
         shell: bash
         run: |
