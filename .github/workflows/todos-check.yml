@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - "new_*"
+      - "migrate_*"
     paths-ignore:
       - 'docs/**'
       - 'site/**'
