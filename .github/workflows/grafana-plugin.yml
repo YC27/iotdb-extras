@@ -5,12 +5,14 @@ on:
     branches:
       - master
       - "new_*"
+      - "migrate_*"
     paths:
       - 'connectors/grafana-plugin/**'
   pull_request:
     branches:
       - master
       - "new_*"
+      - "migrate_*"
     paths:
       - 'connectors/grafana-plugin/**'
 
