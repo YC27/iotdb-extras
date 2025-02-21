@@ -35,62 +35,62 @@ import java.util.EnumSet;
 
 public class ApiService implements IService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
 
-    private Server server;
+  private Server server;
 
-    @Override
-    public void start() {
-        server = new Server(ApiServiceOptions.PORT.value());
-        server.setHandler(constructServletContextHandler());
-        try {
-            server.start();
-            LOGGER.info(
-                    "[ApiService] Started successfully. Listening on port {}",
-                    ApiServiceOptions.PORT.value());
-        } catch (final Exception e) {
-            LOGGER.warn("[ApiService] Failed to start: {}", e.getMessage(), e);
-            server.destroy();
-        }
+  @Override
+  public void start() {
+    server = new Server(ApiServiceOptions.PORT.value());
+    server.setHandler(constructServletContextHandler());
+    try {
+      server.start();
+      LOGGER.info(
+          "[ApiService] Started successfully. Listening on port {}",
+          ApiServiceOptions.PORT.value());
+    } catch (final Exception e) {
+      LOGGER.warn("[ApiService] Failed to start: {}", e.getMessage(), e);
+      server.destroy();
+    }
+  }
+
+  private ServletContextHandler constructServletContextHandler() {
+    final ServletContextHandler context =
+        new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
+    context.addFilter(
+        ApiOriginFilter.class, "/*", EnumSet.of(DispatcherType.INCLUDE, DispatcherType.REQUEST));
+    final ServletHolder holder = context.addServlet(ServletContainer.class, "/*");
+    holder.setInitOrder(1);
+    holder.setInitParameter(
+        "jersey.config.server.provider.packages",
+        "io.swagger.jaxrs.listing, io.swagger.sample.resource, org.apache.iotdb.collector.api");
+    holder.setInitParameter(
+        "jersey.config.server.provider.classnames",
+        "org.glassfish.jersey.media.multipart.MultiPartFeature");
+    holder.setInitParameter("jersey.config.server.wadl.disableWadl", "true");
+    context.setContextPath("/");
+    return context;
+  }
+
+  @Override
+  public void stop() {
+    if (server == null) {
+      LOGGER.info("[ApiService] Not started yet. Nothing to stop.");
+      return;
     }
 
-    private ServletContextHandler constructServletContextHandler() {
-        final ServletContextHandler context =
-                new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
-        context.addFilter(
-                ApiOriginFilter.class, "/*", EnumSet.of(DispatcherType.INCLUDE, DispatcherType.REQUEST));
-        final ServletHolder holder = context.addServlet(ServletContainer.class, "/*");
-        holder.setInitOrder(1);
-        holder.setInitParameter(
-                "jersey.config.server.provider.packages",
-                "io.swagger.jaxrs.listing, io.swagger.sample.resource, org.apache.iotdb.collector.api");
-        holder.setInitParameter(
-                "jersey.config.server.provider.classnames",
-                "org.glassfish.jersey.media.multipart.MultiPartFeature");
-        holder.setInitParameter("jersey.config.server.wadl.disableWadl", "true");
-        context.setContextPath("/");
-        return context;
+    try {
+      server.stop();
+      LOGGER.info("[ApiService] Stopped successfully.");
+    } catch (final Exception e) {
+      LOGGER.warn("[ApiService] Failed to stop: {}", e.getMessage(), e);
+    } finally {
+      server.destroy();
     }
+  }
 
-    @Override
-    public void stop() {
-        if (server == null) {
-            LOGGER.info("[ApiService] Not started yet. Nothing to stop.");
-            return;
-        }
-
-        try {
-            server.stop();
-            LOGGER.info("[ApiService] Stopped successfully.");
-        } catch (final Exception e) {
-            LOGGER.warn("[ApiService] Failed to stop: {}", e.getMessage(), e);
-        } finally {
-            server.destroy();
-        }
-    }
-
-    @Override
-    public String name() {
-        return "ApiService";
-    }
+  @Override
+  public String name() {
+    return "ApiService";
+  }
 }
