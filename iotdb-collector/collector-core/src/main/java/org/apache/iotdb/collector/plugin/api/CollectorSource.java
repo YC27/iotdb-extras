@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 package org.apache.iotdb.collector.plugin.api;
 
 import org.apache.iotdb.pipe.api.PipeSource;
