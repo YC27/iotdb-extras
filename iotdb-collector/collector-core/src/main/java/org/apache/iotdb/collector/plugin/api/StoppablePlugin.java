@@ -16,16 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+package org.apache.iotdb.collector.plugin.api;
 
-package org.apache.iotdb.collector.config;
-
-public class ApiServiceOptions extends Options {
-
-  public static final Option<Integer> PORT =
-      new Option<Integer>("api_service_port", 17070) {
-        @Override
-        public void setValue(final String valueString) {
-          value = Integer.parseInt(valueString);
-        }
-      };
+public interface StoppablePlugin {
+  void stop() throws Exception;
 }
