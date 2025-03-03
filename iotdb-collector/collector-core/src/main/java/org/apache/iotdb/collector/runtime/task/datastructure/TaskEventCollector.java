@@ -19,10 +19,10 @@
 
 package org.apache.iotdb.collector.runtime.task.datastructure;
 
-import com.lmax.disruptor.RingBuffer;
 import org.apache.iotdb.pipe.api.collector.EventCollector;
 import org.apache.iotdb.pipe.api.event.Event;
 
+import com.lmax.disruptor.RingBuffer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

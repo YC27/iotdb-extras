@@ -22,7 +22,6 @@ package org.apache.iotdb.collector.plugin.api;
 import org.apache.iotdb.pipe.api.collector.EventCollector;
 import org.apache.iotdb.pipe.api.event.Event;
 
-
 public abstract class CollectorPushSource implements CollectorSource {
 
   protected final EventCollector collector;

@@ -20,6 +20,4 @@ package org.apache.iotdb.collector.plugin.api;
 
 import org.apache.iotdb.pipe.api.PipeSource;
 
-public interface CollectorSource extends StoppablePlugin, PipeSource {
-    
-}
+public interface CollectorSource extends StoppablePlugin, PipeSource {}

@@ -19,21 +19,15 @@
 
 package org.apache.iotdb.collector.runtime.task.def;
 
-import com.lmax.disruptor.RingBuffer;
 import org.apache.iotdb.collector.plugin.source.HttpPullSource;
-import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventContainer;
 import org.apache.iotdb.pipe.api.event.Event;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
-import java.util.function.Consumer;
 
 public class PullSourceTask extends SourceTask {
 

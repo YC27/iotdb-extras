@@ -19,17 +19,18 @@
 
 package org.apache.iotdb.collector.runtime.task.def;
 
+import org.apache.iotdb.collector.config.TaskRuntimeOptions;
+import org.apache.iotdb.collector.plugin.sink.SessionSink;
+import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventConsumer;
+import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventContainer;
+import org.apache.iotdb.collector.runtime.task.exception.DisruptorTaskExceptionHandler;
+import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameters;
+
 import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
-import org.apache.iotdb.collector.config.TaskRuntimeOptions;
-import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventConsumer;
-import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventContainer;
-import org.apache.iotdb.collector.plugin.sink.SessionSink;
-import org.apache.iotdb.collector.runtime.task.exception.DisruptorTaskExceptionHandler;
-import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameters;
 
 import java.util.Map;
 

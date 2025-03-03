@@ -21,6 +21,7 @@ package org.apache.iotdb.collector.runtime.task.def;
 
 import org.apache.iotdb.collector.plugin.source.HttpPushSource;
 import org.apache.iotdb.collector.runtime.task.datastructure.TaskEventCollector;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

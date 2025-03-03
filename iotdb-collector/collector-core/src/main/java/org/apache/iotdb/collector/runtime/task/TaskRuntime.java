@@ -20,15 +20,16 @@
 package org.apache.iotdb.collector.runtime.task;
 
 import org.apache.iotdb.collector.runtime.task.def.ProcessorTask;
-import org.apache.iotdb.collector.runtime.task.def.PullSourceTask;
 import org.apache.iotdb.collector.runtime.task.def.PushSourceTask;
 import org.apache.iotdb.collector.runtime.task.def.SinkTask;
 import org.apache.iotdb.collector.runtime.task.def.SourceTask;
 import org.apache.iotdb.collector.runtime.task.def.TaskRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.Response;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

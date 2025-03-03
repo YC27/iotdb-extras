@@ -1,9 +1,10 @@
 package org.apache.iotdb.collector.runtime.task.datastructure;
 
-import com.lmax.disruptor.WorkHandler;
 import org.apache.iotdb.pipe.api.PipePlugin;
 import org.apache.iotdb.pipe.api.PipeProcessor;
 import org.apache.iotdb.pipe.api.PipeSink;
+
+import com.lmax.disruptor.WorkHandler;
 
 public class TaskEventConsumer implements WorkHandler<TaskEventContainer> {
 

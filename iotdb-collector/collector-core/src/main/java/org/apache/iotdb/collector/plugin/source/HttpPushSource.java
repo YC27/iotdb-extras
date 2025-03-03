@@ -33,7 +33,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.LockSupport;
 
 public class HttpPushSource extends CollectorPushSource {
 
