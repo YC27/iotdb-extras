@@ -953,6 +953,11 @@
                 <version>${moquette.version}</version>
             </dependency>
             <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.iotdb</groupId>
                 <artifactId>service-rpc</artifactId>
                 <version>${iotdb.version}</version>

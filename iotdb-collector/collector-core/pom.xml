@@ -198,6 +198,10 @@
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <resources>
@@ -220,6 +224,19 @@
                         <usedDependency>org.eclipse.jetty:jetty-http</usedDependency>
                         <usedDependency>org.eclipse.jetty:jetty-util</usedDependency>
                         <usedDependency>org.glassfish.jersey.inject:jersey-hk2</usedDependency>
+                        <usedDependency>org.eclipse.milo:sdk-core</usedDependency>
+                        <usedDependency>org.apache.commons:commons-collections4</usedDependency>
+                        <usedDependency>org.eclipse.milo:stack-server</usedDependency>
+                        <usedDependency>org.eclipse.milo:sdk-server</usedDependency>
+                        <usedDependency>org.java-websocket:Java-WebSocket</usedDependency>
+                        <usedDependency>ch.qos.logback:logback-classic</usedDependency>
+                        <usedDependency>net.java.dev.jna:jna-platform</usedDependency>
+                        <usedDependency>io.moquette:moquette-broker</usedDependency>
+                        <usedDependency>org.apache.commons:commons-pool2</usedDependency>
+                        <usedDependency>org.xerial:sqlite-jdbc</usedDependency>
+                        <usedDependency>org.eclipse.milo:stack-core</usedDependency>
+                        <usedDependency>org.eclipse.milo:stack-core</usedDependency>
+                        <usedDependency>net.java.dev.jna:jna</usedDependency>
                     </usedDependencies>
                 </configuration>
             </plugin>
@@ -247,6 +264,7 @@
                                 <descriptor>src/assembly/core.xml</descriptor>
                             </descriptors>
                             <appendAssemblyId>false</appendAssemblyId>
+                            <attach>true</attach>
                             <archive>
                                 <manifest>
                                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
