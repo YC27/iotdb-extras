@@ -30,7 +30,6 @@
         <dependencySet>
             <includes>
                 <include>*:collector-core:zip:*</include>
-                <include>*:collector-openapi:zip:*</include>
             </includes>
             <outputDirectory>${file.separator}</outputDirectory>
             <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
