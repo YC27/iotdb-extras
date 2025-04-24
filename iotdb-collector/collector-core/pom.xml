@@ -100,22 +100,10 @@
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.java-websocket</groupId>-->
-        <!--            <artifactId>Java-WebSocket</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.commons</groupId>-->
-        <!--            <artifactId>commons-collections4</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.commons</groupId>-->
-        <!--            <artifactId>commons-pool2</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.iotdb</groupId>
             <artifactId>iotdb-thrift-commons</artifactId>
@@ -128,14 +116,6 @@
             <groupId>org.apache.iotdb</groupId>
             <artifactId>iotdb-session</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>net.java.dev.jna</groupId>-->
-        <!--            <artifactId>jna</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>net.java.dev.jna</groupId>-->
-        <!--            <artifactId>jna-platform</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
@@ -144,30 +124,10 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.eclipse.milo</groupId>-->
-        <!--            <artifactId>stack-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.eclipse.milo</groupId>-->
-        <!--            <artifactId>sdk-core</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.eclipse.milo</groupId>-->
-        <!--            <artifactId>stack-server</artifactId>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.eclipse.milo</groupId>-->
-        <!--            <artifactId>sdk-server</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.tsfile</groupId>
             <artifactId>common</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>io.moquette</groupId>-->
-        <!--            <artifactId>moquette-broker</artifactId>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
