@@ -19,22 +19,12 @@
 
 package org.apache.iotdb.collector.plugin.builtin.source;
 
-import org.apache.iotdb.collector.plugin.api.PushSource;
-import org.apache.iotdb.collector.plugin.api.customizer.CollectorRuntimeEnvironment;
-import org.apache.iotdb.collector.runtime.progress.ProgressIndex;
-import org.apache.iotdb.collector.service.RuntimeService;
-import org.apache.iotdb.pipe.api.customizer.configuration.PipeSourceRuntimeConfiguration;
-import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameterValidator;
-import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameters;
-
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_GROUP_ID_KEY;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_GROUP_ID_VALUE;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_TOPIC_KEY;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_TOPIC_VALUE;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_URL_KEY;
+import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_URL_VALUE;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -42,13 +32,20 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_GROUP_ID_KEY;
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_GROUP_ID_VALUE;
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_TOPIC_KEY;
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_TOPIC_VALUE;
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_URL_KEY;
-import static org.apache.iotdb.collector.plugin.builtin.source.constant.KafkaSourceConstant.KAFKA_SOURCE_URL_VALUE;
+import org.apache.iotdb.collector.plugin.api.PushSource;
+import org.apache.iotdb.collector.plugin.api.customizer.CollectorRuntimeEnvironment;
+import org.apache.iotdb.collector.runtime.progress.ProgressIndex;
+import org.apache.iotdb.collector.service.RuntimeService;
+import org.apache.iotdb.pipe.api.customizer.configuration.PipeSourceRuntimeConfiguration;
+import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameterValidator;
+import org.apache.iotdb.pipe.api.customizer.parameter.PipeParameters;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.serialization.StringDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class KafkaSource extends PushSource {
 
@@ -104,12 +101,12 @@ public class KafkaSource extends PushSource {
 
   public void doWork() {
     final Properties props = new Properties();
-    props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServiceURL);
-    props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-    props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-    props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "none");
-    props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+    props.put("bootstrap.servers", kafkaServiceURL);
+    props.put("key.deserializer", StringDeserializer.class.getName());
+    props.put("value.deserializer", StringDeserializer.class.getName());
+    props.put("group.id", groupId);
+    props.put("auto.offset.reset", "none");
+    props.put("enable.auto.commit", "false");
 
     try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
       final TopicPartition currentWorkTopicPartition = new TopicPartition(topic, instanceIndex);
