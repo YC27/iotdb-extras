@@ -981,11 +981,6 @@
                 <artifactId>iotdb-session</artifactId>
                 <version>${iotdb.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-clients</artifactId>
-                <version>${kafka.version}</version>
-            </dependency>
             <!-- Conflict:
         json-smart (pulls in 9.3),
         cglib (pulls in 7.1)
