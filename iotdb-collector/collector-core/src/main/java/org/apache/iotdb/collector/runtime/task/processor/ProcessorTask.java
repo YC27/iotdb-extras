@@ -130,7 +130,10 @@ public class ProcessorTask extends Task {
             event ->
                 event.register(
                     taskId,
-                    () -> sinkProducer.collect(new PeriodicalEvent()),
+                    () -> {
+                      sinkProducer.collect(new PeriodicalEvent());
+                      LOGGER.info("successfully to push periodical event");
+                    },
                     TaskRuntimeOptions.EXECUTOR_CRON_HEARTBEAT_EVENT_INTERVAL_SECONDS.value()));
   }
 
